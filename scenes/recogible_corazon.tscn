@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://olabpy5j153b"]
+
+[ext_resource type="Script" path="res://assets/scripts/RecogibleCorazon.gd" id="1_30hyj"]
+[ext_resource type="Texture2D" uid="uid://kfbbpn6fkwjw" path="res://assets/images/Corazon/corazon.png" id="2_mo2gy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f65lb"]
+radius = 8.0
+
+[node name="RecogibleCorazon" type="Area2D"]
+script = ExtResource("1_30hyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_mo2gy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f65lb")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

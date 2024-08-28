@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c3fqcflegn41i"]
 
-[ext_resource type="Script" path="res://scenes/gui.gd" id="1_i03nm"]
+[ext_resource type="Script" path="res://assets/scripts/gui.gd" id="1_j5iv1"]
 [ext_resource type="FontFile" uid="uid://s5uvrlcmwmqs" path="res://assets/NewAmsterdam-Regular.ttf" id="1_rpjvp"]
 [ext_resource type="Texture2D" uid="uid://diiq63uoatg1" path="res://assets/images/gasolina/Sprite-0001-Sheet.png" id="2_ov72d"]
 [ext_resource type="Texture2D" uid="uid://00n60htkdq76" path="res://assets/images/gasolina/gas_dead..png" id="4_557xi"]
@@ -112,7 +112,7 @@ animations = [{
 }]
 
 [node name="GUI" type="CanvasLayer"]
-script = ExtResource("1_i03nm")
+script = ExtResource("1_j5iv1")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 2

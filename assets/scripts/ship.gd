@@ -38,7 +38,7 @@ func activarTurbo():
 		#Para que no de error, ja que si no busca luego el nombre_turbo+_turbo i no existe
 		if actualAnimation.contains("_turbo") :
 			actualAnimation = actualAnimation.replace("_turbo","")
-			print(actualAnimation)
+
 		$AnimatedSprite2D.play(actualAnimation+"_turbo")
 		GLOBAL.velocity_ship = 2
 		GLOBAL.gasolina -= 0.010

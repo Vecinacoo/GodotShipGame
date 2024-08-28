@@ -80,7 +80,7 @@ func anim_crt(delta):
 	$Ship.position.x = clamp($Ship.position.x,0,screenSize.x)
 	$Ship.position.y = clamp($Ship.position.y,0,896)
 	GLOBAL.gasolina -= 0.005
-	print(GLOBAL.gasolina)
+	#print(GLOBAL.gasolina)
 
 func shoot_crtl():
 	if canShoot:
@@ -100,8 +100,8 @@ func _on_timer_for_spawn_enemy_timeout():
 
 	instance_enemy.position = Vector2(randi_range(10,570),0)
 	add_child(instance_enemy)
-	print("SPAWN")
-	$TimerForSpawnEnemy.start(randi_range(3,5))
+	#print("SPAWN")
+	$TimerForSpawnEnemy.start(randi_range(0,4))
 
 
 

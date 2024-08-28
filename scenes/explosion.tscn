@@ -265,3 +265,4 @@ centered = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_b31ly")
+volume_db = -19.81
