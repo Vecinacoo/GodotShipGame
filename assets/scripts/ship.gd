@@ -40,7 +40,7 @@ func activarTurbo():
 			actualAnimation = actualAnimation.replace("_turbo","")
 
 		$AnimatedSprite2D.play(actualAnimation+"_turbo")
-		GLOBAL.velocity_ship = 2
+		GLOBAL.velocity_ship = 3
 		GLOBAL.gasolina -= 0.010
 
 func _on_timer_for_power_laser_timeout():

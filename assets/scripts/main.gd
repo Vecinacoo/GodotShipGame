@@ -101,7 +101,7 @@ func _on_timer_for_spawn_enemy_timeout():
 	instance_enemy.position = Vector2(randi_range(10,570),0)
 	add_child(instance_enemy)
 	#print("SPAWN")
-	$TimerForSpawnEnemy.start(randi_range(0,4))
+	$TimerForSpawnEnemy.start(randi_range(1,1))
 
 
 
