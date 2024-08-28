@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3fqcflegn41i"]
+[gd_scene load_steps=16 format=3 uid="uid://c3fqcflegn41i"]
 
 [ext_resource type="Script" path="res://scenes/gui.gd" id="1_i03nm"]
 [ext_resource type="FontFile" uid="uid://s5uvrlcmwmqs" path="res://assets/NewAmsterdam-Regular.ttf" id="1_rpjvp"]
 [ext_resource type="Texture2D" uid="uid://diiq63uoatg1" path="res://assets/images/gasolina/Sprite-0001-Sheet.png" id="2_ov72d"]
 [ext_resource type="Texture2D" uid="uid://00n60htkdq76" path="res://assets/images/gasolina/gas_dead..png" id="4_557xi"]
+[ext_resource type="Texture2D" uid="uid://dafjvf4x87g4s" path="res://assets/images/Corazon/AnimacionCorazonJugador.png" id="5_jato6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5os0"]
 atlas = ExtResource("2_ov72d")
@@ -59,6 +60,57 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_egk0q"]
+atlas = ExtResource("5_jato6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qygj3"]
+atlas = ExtResource("5_jato6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3ntx"]
+atlas = ExtResource("5_jato6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilpfh"]
+atlas = ExtResource("5_jato6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_up4t3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egk0q")
+}],
+"loop": true,
+"name": &"CorazonesDosVidas",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qygj3")
+}],
+"loop": true,
+"name": &"CorazonesLLenos",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3ntx")
+}],
+"loop": true,
+"name": &"CorazonesUnaVida",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilpfh")
+}],
+"loop": true,
+"name": &"CorazonesVacios",
+"speed": 5.0
+}]
+
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_i03nm")
 
@@ -80,3 +132,8 @@ position = Vector2(26, 863)
 sprite_frames = SubResource("SpriteFrames_x578p")
 animation = &"ZERO"
 frame_progress = 0.121468
+
+[node name="AnimatedSprite2DCorazones" type="AnimatedSprite2D" parent="."]
+position = Vector2(553, 885)
+sprite_frames = SubResource("SpriteFrames_up4t3")
+animation = &"CorazonesVacios"
