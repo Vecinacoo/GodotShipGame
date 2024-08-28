@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3fqcflegn41i"]
+
+[ext_resource type="Script" path="res://scenes/gui.gd" id="1_i03nm"]
+[ext_resource type="FontFile" uid="uid://s5uvrlcmwmqs" path="res://assets/NewAmsterdam-Regular.ttf" id="1_rpjvp"]
+[ext_resource type="Texture2D" uid="uid://diiq63uoatg1" path="res://assets/images/gasolina/Sprite-0001-Sheet.png" id="2_ov72d"]
+[ext_resource type="Texture2D" uid="uid://00n60htkdq76" path="res://assets/images/gasolina/gas_dead..png" id="4_557xi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5os0"]
+atlas = ExtResource("2_ov72d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bvx1"]
+atlas = ExtResource("2_ov72d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7xor"]
+atlas = ExtResource("2_ov72d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s486h"]
+atlas = ExtResource("2_ov72d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x578p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5os0")
+}],
+"loop": false,
+"name": &"DOS_GAS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bvx1")
+}],
+"loop": false,
+"name": &"FULL_GAS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7xor")
+}],
+"loop": true,
+"name": &"UNO_GAS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s486h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_557xi")
+}],
+"loop": true,
+"name": &"ZERO",
+"speed": 3.0
+}]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_i03nm")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -33.0
+offset_right = 65.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_rpjvp")
+theme_override_font_sizes/font_size = 27
+text = "SCORE: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimatedSprite2Gas" type="AnimatedSprite2D" parent="."]
+position = Vector2(26, 863)
+sprite_frames = SubResource("SpriteFrames_x578p")
+animation = &"ZERO"
+frame_progress = 0.121468

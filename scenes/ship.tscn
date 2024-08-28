@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://hvtkchfcjblo"]
+
+[ext_resource type="Script" path="res://assets/scripts/ship.gd" id="1_4ikp0"]
+[ext_resource type="Texture2D" uid="uid://c82tg4y76q2mc" path="res://assets/images/ship/Main Ship - Base - Damaged.png" id="1_w8dek"]
+[ext_resource type="Texture2D" uid="uid://c7u0rcs8lrrfe" path="res://assets/images/ship/Main Ship - Base - Very damaged.png" id="2_c7w7a"]
+[ext_resource type="Texture2D" uid="uid://cm1jp11ihdekn" path="res://assets/images/ship/WithTurbo/Main Ship - Base - DamagedTurbo.png" id="3_5np43"]
+[ext_resource type="Texture2D" uid="uid://w7260ysdnj8u" path="res://assets/images/ship/Main Ship - Base - Full health.png" id="3_ygd6x"]
+[ext_resource type="Texture2D" uid="uid://cvuk80bbfaf7w" path="res://assets/images/ship/WithTurbo/Main Ship - Base - Very damagedTurbo.png" id="5_gmlog"]
+[ext_resource type="Texture2D" uid="uid://bj8ntiuilu7xn" path="res://assets/images/ship/WithTurbo/Main Ship - Base - Full healthTurbo.png" id="7_63bbo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ecudp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_w8dek")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5np43")
+}],
+"loop": true,
+"name": &"damaged_turbo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c7w7a")
+}],
+"loop": true,
+"name": &"full_damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gmlog")
+}],
+"loop": true,
+"name": &"full_damaged_turbo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ygd6x")
+}],
+"loop": true,
+"name": &"fullhealth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_63bbo")
+}],
+"loop": true,
+"name": &"fullhealth_turbo",
+"speed": 5.0
+}]
+
+[node name="Ship" type="CharacterBody2D" groups=["Jugador"]]
+texture_filter = 1
+scale = Vector2(2, 2)
+motion_mode = 1
+script = ExtResource("1_4ikp0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ecudp")
+animation = &"fullhealth_turbo"
+
+[node name="CollisionShip" type="CollisionPolygon2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-0.357056, -0.1)
+scale = Vector2(1.01411, 1.00481)
+polygon = PackedVector2Array(0.352088, -12.8382, -5, -4, -14, 5, -15, 10, -4, 6, -3, 12, 2, 13, 3, 7, 16, 11, 16, 5, 6, -4)
+
+[node name="MarkerForFlash" type="Marker2D" parent="."]
+position = Vector2(0, -12.5)
+
+[node name="TimerForPowerLaser" type="Timer" parent="."]
+wait_time = 10.0
+
+[connection signal="timeout" from="TimerForPowerLaser" to="." method="_on_timer_for_power_laser_timeout"]

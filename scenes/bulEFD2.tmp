@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxwbaooog5lr5"]
+
+[ext_resource type="Script" path="res://assets/scripts/bullet.gd" id="1_knwqb"]
+[ext_resource type="Texture2D" uid="uid://dia2k6t0jg8uh" path="res://assets/images/bullets/Blue Effect Bullet Impact Explosion 32x32.png" id="1_qlvqg"]
+[ext_resource type="Texture2D" uid="uid://dv8lexlttlfo8" path="res://assets/images/bullets/Purple Effect Bullet Impact Explosion 32x32.png" id="2_mlst1"]
+[ext_resource type="Texture2D" uid="uid://bkvt0eitja435" path="res://assets/images/bullets/Red Effect Bullet Impact Explosion 32x32.png" id="3_tl2yy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxpqb"]
+atlas = ExtResource("1_qlvqg")
+region = Rect2(448, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s7i2"]
+atlas = ExtResource("2_mlst1")
+region = Rect2(448, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hl78"]
+atlas = ExtResource("3_tl2yy")
+region = Rect2(448, 480, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uffih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxpqb")
+}],
+"loop": false,
+"name": &"bullet_blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2s7i2")
+}],
+"loop": true,
+"name": &"bullet_purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hl78")
+}],
+"loop": true,
+"name": &"bullet_red",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvex4"]
+radius = 13.0384
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_knwqb")
+
+[node name="AnimatedSprite2DBullet" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_uffih")
+animation = &"bullet_blue"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_nvex4")

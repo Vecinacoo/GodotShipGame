@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://djcgyso57p7wy"]
+
+[ext_resource type="Texture2D" uid="uid://s5axx841exno" path="res://assets/images/enemys/tiny_ship1.png" id="1_wcl2h"]
+[ext_resource type="Script" path="res://assets/scripts/Area2DEnemy.gd" id="1_xy5hk"]
+[ext_resource type="PackedScene" uid="uid://b4psx2dqv8ujy" path="res://scenes/explosion.tscn" id="2_4tni4"]
+
+[node name="Node2DEnemy" type="Node2D" groups=["Enemigo"]]
+scale = Vector2(2, 2)
+
+[node name="Area2DEnemy" type="Area2D" parent="."]
+texture_filter = 1
+rotation = 3.14159
+script = ExtResource("1_xy5hk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2DEnemy"]
+texture = ExtResource("1_wcl2h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2DEnemy"]
+polygon = PackedVector2Array(3.04222e-05, -12, 5.00002, -9.49999, 5, -1.49999, 12, 7, 12, 11, 7, 11, 4, 7, -4, 7, -7, 11, -12, 11, -12, 6.99997, -5.5, -1.50001, -4.99997, -10)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Area2DEnemy"]
+
+[node name="Explosion" parent="." instance=ExtResource("2_4tni4")]
+
+[connection signal="area_entered" from="Area2DEnemy" to="Area2DEnemy" method="_on_area_entered"]
+[connection signal="body_entered" from="Area2DEnemy" to="Area2DEnemy" method="_on_body_entered"]
+[connection signal="screen_exited" from="Area2DEnemy/VisibleOnScreenNotifier2D" to="Area2DEnemy" method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6j2i1fmxulp7"]
+
+[ext_resource type="Script" path="res://assets/scripts/super_poder_laser.gd" id="1_loac1"]
+[ext_resource type="Texture2D" uid="uid://rwrnpua274d7" path="res://assets/images/SuperPoderLaser/superpoder.png" id="2_qtfva"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ncm1u"]
+radius = 16.0
+
+[node name="SuperPoderLaser" type="Area2D" groups=["superPoderLaser"]]
+texture_filter = 1
+script = ExtResource("1_loac1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2.11719)
+texture = ExtResource("2_qtfva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ncm1u")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://hieq0bgcc80q"]
+
+[ext_resource type="Script" path="res://assets/scripts/parallax_background.gd" id="1_44rdo"]
+[ext_resource type="Texture2D" uid="uid://uhi8vqjhat05" path="res://assets/images/background/estrellas.jpg" id="1_t7hkj"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_44rdo")
+scrolling_speed = 11
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(0, 900)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+scale = Vector2(1.03546, 0.899202)
+texture = ExtResource("1_t7hkj")
+centered = false
